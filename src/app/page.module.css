@@ -1,10 +1,12 @@
 .page {
+  --background: #e3f6e5; /* 明るいグリーン */
+  --foreground: #6b4f2a; /* ブラウン（アースカラー） */
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
+  --button-primary-hover: #4e3b1f; /* 濃いめのブラウン */
+  --button-secondary-hover: #f2e9e1; /* 薄いアースカラー */
+  background: var(--background);
 
   display: grid;
   grid-template-rows: 20px 1fr 20px;
@@ -18,12 +20,14 @@
 
 @media (prefers-color-scheme: dark) {
   .page {
+    --background: #1b3a2b; /* ダークグリーン */
+    --foreground: #bfa980; /* 明るいブラウン */
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
+    --button-primary-hover: #a68a64;
+    --button-secondary-hover: #2e4736;
+    background: var(--background);
   }
 }
 
@@ -88,7 +92,9 @@ a.primary {
 }
 
 a.secondary {
-  border-color: var(--gray-alpha-200);
+  border-color: var(--foreground);
+  color: var(--foreground);
+  background: transparent;
   min-width: 158px;
 }
 
@@ -117,7 +123,8 @@ a.secondary {
 
   a.secondary:hover {
     background: var(--button-secondary-hover);
-    border-color: transparent;
+    border-color: var(--button-primary-hover);
+    color: var(--button-primary-hover);
   }
 
   .footer a:hover {
