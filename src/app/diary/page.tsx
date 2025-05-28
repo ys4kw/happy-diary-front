@@ -1,9 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import EditIcon from "@mui/icons-material/Edit";
 import styles from "../page.module.css";
 
 export default function Diary() {
+  const [text, setText] = useState("");
+  const [info, setInfo] = useState("");
   return (
     <div className={styles.page}>
       <main className={styles.main} style={{ width: "100%", height: "100%" }}>
@@ -33,8 +38,7 @@ export default function Diary() {
               boxSizing: "border-box",
             }}
           >
-            {/* ここに情報表示欄の内容を追加できます */}
-            情報表示欄
+            {info ? info : "情報表示欄"}
           </div>
         </div>
         <div
@@ -55,6 +59,8 @@ export default function Diary() {
             maxRows={8}
             variant="outlined"
             placeholder="今日の出来事や気持ちを書きましょう…"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
             sx={{
               width: "100%",
               maxWidth: 600,
@@ -75,6 +81,10 @@ export default function Diary() {
               "&:hover": {
                 backgroundColor: "#4e3b1f",
               },
+            }}
+            onClick={() => {
+              setInfo(text);
+              setText("");
             }}
           >
             <EditIcon />
