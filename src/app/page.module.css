@@ -6,13 +6,23 @@
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
   --button-primary-hover: #4e3b1f; /* 濃いめのブラウン */
   --button-secondary-hover: #f2e9e1; /* 薄いアースカラー */
-  background: var(--background);
+  background: repeating-linear-gradient(
+    to bottom,
+    #e3f6e5 0px,
+    #e3f6e5 47px,
+    #c8e6c9 48px,
+    #e3f6e5 49px
+  );
+  border-left: 8px solid #bfa980;
+  border-right: 8px solid #bfa980;
+  box-sizing: border-box;
+  min-height: 100svh;
+  position: relative;
 
   display: grid;
   grid-template-rows: 20px 1fr 20px;
   align-items: center;
   justify-items: center;
-  min-height: 100svh;
   padding: 80px;
   gap: 64px;
   font-family: var(--font-geist-sans);
@@ -27,7 +37,15 @@
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
     --button-primary-hover: #a68a64;
     --button-secondary-hover: #2e4736;
-    background: var(--background);
+    background: repeating-linear-gradient(
+      to bottom,
+      #1b3a2b 0px,
+      #1b3a2b 47px,
+      #2e4736 48px,
+      #1b3a2b 49px
+    );
+    border-left: 8px solid #6b4f2a;
+    border-right: 8px solid #6b4f2a;
   }
 }
 
