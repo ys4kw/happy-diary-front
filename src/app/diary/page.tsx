@@ -25,17 +25,20 @@ export default function Diary() {
             style={{
               width: "100%",
               minHeight: 120,
-              background: "#fff",
-              borderRadius: 16,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-              border: "1px solid #e0e0e0",
-              padding: 24,
+              background: "transparent",
+              // borderRadius: 16, // Removed
+              // boxShadow: "0 2px 8px rgba(0,0,0,0.04)", // Removed
+              border: "none",
+              padding: "12px 0", // Adjusted padding
               display: "flex",
               alignItems: "center",
               fontSize: 18,
               fontWeight: 500,
               fontFamily: "inherit",
               boxSizing: "border-box",
+              // Ensure text color contrasts with notebook background.
+              // fontFamily: "inherit" should handle this.
+              // If not, explicitly set color: "var(--foreground)" or similar from page.module.css
             }}
           >
             {info ? info : "情報表示欄"}
@@ -64,22 +67,40 @@ export default function Diary() {
             sx={{
               width: "100%",
               maxWidth: 600,
-              background: "#fff",
-              borderRadius: 2,
-              boxShadow: 1,
+              background: "transparent", // Changed
+              borderRadius: 0, // Changed
+              // boxShadow: 1, // Removed
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "rgba(0, 0, 0, 0.23)", // Subtle border
+                },
+                "&:hover fieldset": {
+                  borderColor: "rgba(0, 0, 0, 0.5)", // Darker on hover
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: (theme) => theme.palette.primary.main, // Theme color on focus
+                },
+                "background": "transparent", // Ensure the input area itself is transparent
+              },
+              "& .MuiInputBase-input": {
+                fontFamily: "inherit", // Match page font
+                background: "transparent", // Ensure text input area is transparent
+              },
             }}
           />
           <Button
-            variant="contained"
+            variant="outlined" // Changed variant
             sx={{
               minWidth: 56,
               minHeight: 56,
-              borderRadius: "50%",
-              backgroundColor: "#6b4f2a",
-              color: "#fff",
+              borderRadius: "50%", // Kept for circular icon button
+              color: "var(--foreground)", // Use theme variable for text/icon color
+              borderColor: "var(--foreground)", // Use theme variable for border
               ml: 2,
               "&:hover": {
-                backgroundColor: "#4e3b1f",
+                backgroundColor: "var(--button-secondary-hover)", // Light background on hover
+                borderColor: "var(--button-primary-hover)", // Darker border on hover
+                // color: "var(--button-primary-hover)", // Optional: if text color needs to change on hover
               },
             }}
             onClick={() => {
